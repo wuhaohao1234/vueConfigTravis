@@ -10,5 +10,4 @@ install:
 script:
   - yarn
   - yarn lint
-  - yarn dev
   - yarn build
