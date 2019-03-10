@@ -3,7 +3,7 @@ node_js:
   - "11.3.0"
 branches:
   only:
-    - develop
+    - dev
 install:
   - npm install -g yarn
   - yarn
