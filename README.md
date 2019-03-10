@@ -1,5 +1,5 @@
 # vueConfigTravis
-
+[![Build Status](https://travis-ci.org/wuhaohao1234/vueConfigTravis.svg?branch=dev)](https://travis-ci.org/wuhaohao1234/vueConfigTravis)
 ## 包含
 
 1. webpack4
