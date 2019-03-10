@@ -1,40 +1,10 @@
-# vueConfigTravis
-[![Build Status](https://travis-ci.org/wuhaohao1234/vueConfigTravis.svg?branch=dev)](https://travis-ci.org/wuhaohao1234/vueConfigTravis)
-## 包含
+# webpack配置
 
-1. webpack4
-2. travis-ci
-3. jest
-4. vue
-5. typescript
-6. git-commit格式规范
-
-## 起步
-
-### 依赖项
-* babel-core 
-* babel-loader 
-* babel-preset-env 
-* clean-webpack-plugin 每次清理打包的文件
-
-* css-loader vue-loader必须的
-* html-webpack-plugin html模板，用于展示信息 
-* ts-loader ts预处理器
-* tslint ts语法测试
-* typescript 本地安装ts
-* vue 
-* vue-class-component 
-* vue-loader 
-* vue-property-decorator 
-* vue-template-compiler vue模板字符串
-
-* webpack 
-* webpack-cli 
-* webpack-merge 
-
-## webpack配置
-
-1. webpack.base.conf.js模板
+## 项目分为生产模式，开发模式，全局模式均在build文件夹下
+* webpack.base.conf.js文件为全局下的
+* webpack.dev.conf.js文件为开发模式
+* webpack.prod.conf.js文件为生产模式
+## webpack.base.conf文件
 ```
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -83,21 +53,7 @@ module.exports = {
     }
 }
 ```
-2. 生产环节配置webpack配置
-```
-const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const baseConfig = require('./webpack.base.conf');
-
-module.exports = merge(baseConfig,{
-    mode: 'production',
-    devtool: 'source-map',
-    plugins: [
-        new CleanWebpackPlugin()
-    ]
-})
-```
-3. 开发环境配置
+## webpack.dev.conf.js
 ```
 const merge = require('webpack-merge');
 const path = require('path');
@@ -115,14 +71,17 @@ module.exports = merge(baseConfig, {
     ]
 });
 ```
-## package.json配置
-
+## webpack.prod.conf.js
 ```
-"build": "webpack --config build/webpack.prod.conf.js",
-"dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-"lint": "tslint --project tslint.json"
+const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const baseConfig = require('./webpack.base.conf');
+
+module.exports = merge(baseConfig,{
+    mode: 'production',
+    devtool: 'source-map',
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
+})
 ```
-
-## 文件阅读
-
-    进入docs文件夹,开始阅读init.md
